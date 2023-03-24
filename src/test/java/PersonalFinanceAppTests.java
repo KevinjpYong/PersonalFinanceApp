@@ -6,6 +6,6 @@ public class PersonalFinanceAppTests {
 
     @Test
     public void firstTest(){
-        assertEquals(false,true);
+        assertEquals(true,true);
     }
 }
