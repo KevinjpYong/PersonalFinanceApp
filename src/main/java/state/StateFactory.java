@@ -23,6 +23,8 @@ public class StateFactory {
                 return new SavingState();
             case LIABILITY_STATE:
                 return new LiabilityState();
+            case STATEMENT_STATE:
+                return new StatementState();
             default:
                 throw new IllegalArgumentException("Invalid state type: " + type);
         }

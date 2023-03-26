@@ -23,8 +23,10 @@ public class LiabilityState implements State{
                 return StateFactory.getInstance().createState(StateType.LIABILITY_STATE);
             case("3"):
                 return StateFactory.getInstance().createState(StateType.SELECTION_STATE);
+            default:
+                System.out.println("Invalid Option");
+                return StateFactory.getInstance().createState(StateType.LIABILITY_STATE);
         }
-        return null;
     }
 
     private String displayOption(){
@@ -36,12 +38,17 @@ public class LiabilityState implements State{
 
     private void displayLiabilities(User user){
         System.out.println("---------------------------------------------------------------------------------------------");
-        System.out.printf("%-4s%-15s %-15s %-10s %-10s ", "NO.","NAME", "AMOUNT", "RATES(%)", "DURATION(Month)");
+        System.out.printf("%-4s%-15s %-15s %-20s %-20s %-20s", "NO.","NAME", "AMOUNT", "RATES(%)", "DURATION(Month)","MONTHLY PAYMENT");
         System.out.println();
         System.out.println("---------------------------------------------------------------------------------------------");
         int i = 1;
         for(Liability liability: user.getLiabilities()){
-            System.out.format("%-4s%-15s %-15.2f %-10.2f %-10s \n", i+".",liability.getName(), liability.getAmount(), liability.getRates()*100, liability.getDuration());
+            System.out.format("%-4s%-15s %-15.2f %-20.2f %-20s %-20.2f \n",
+                    i+".",liability.getName(),
+                    liability.getAmount(),
+                    liability.getRates()*100,
+                    liability.getDuration(),
+                    liability.getMonthlyPayment());
             i++;
         }
         System.out.println("---------------------------------------------------------------------------------------------");
