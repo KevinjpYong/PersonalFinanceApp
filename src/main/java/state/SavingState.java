@@ -8,6 +8,9 @@ public class SavingState implements State{
     Scanner scanner = new Scanner(System.in);
     @Override
     public State handle(User user) {
+        System.out.println("---------------");
+        System.out.println("Saving Menu");
+        System.out.println("---------------");
         System.out.printf("Amount in Saving: %,.2f \n", user.getSaving());
         System.out.println("1.Change amount.");
         System.out.println("2.Return to menu.");

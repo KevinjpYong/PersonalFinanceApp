@@ -14,7 +14,7 @@ public class SelectionState implements State{
     @Override
     public State handle(User user) {
         System.out.println("-------------------------------------");
-        System.out.println("Options");
+        System.out.println("Selection Menu");
         System.out.println("-------------------------------------");
         System.out.println("1.Display/Change Saving Account");
         System.out.println("2.Display/Add Liabilities");
