@@ -21,6 +21,8 @@ public class StateFactory {
                 return new SelectionState();
             case SAVING_STATE:
                 return new SavingState();
+            case LIABILITY_STATE:
+                return new LiabilityState();
             default:
                 throw new IllegalArgumentException("Invalid state type: " + type);
         }

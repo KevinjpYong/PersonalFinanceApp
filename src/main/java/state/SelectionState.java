@@ -14,7 +14,7 @@ public class SelectionState implements State{
     @Override
     public State handle(User user) {
         System.out.println("-------------------------------------");
-        System.out.println("Options");
+        System.out.println("Selection Menu");
         System.out.println("-------------------------------------");
         System.out.println("1.Display/Change Saving Account");
         System.out.println("2.Display/Add Liabilities");
@@ -27,6 +27,8 @@ public class SelectionState implements State{
         switch (choice){
             case ("1"):
                 return StateFactory.getInstance().createState(StateType.SAVING_STATE);
+            case("2"):
+                return StateFactory.getInstance().createState(StateType.LIABILITY_STATE);
         }
         return null;
     }

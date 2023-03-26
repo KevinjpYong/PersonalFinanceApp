@@ -13,6 +13,7 @@ public class User {
         this.name = name;
         this.age = age;
         this.saving = new Saving(0);
+        this.liabilities = new ArrayList<>();
     }
 
     public void setSaving(double amount){
@@ -21,5 +22,13 @@ public class User {
 
     public double getSaving(){
         return saving.getAmount();
+    }
+
+    public void addLiabilities(Liability liability){
+        this.liabilities.add(liability);
+    }
+
+    public ArrayList<Liability> getLiabilities(){
+        return this.liabilities;
     }
 }
