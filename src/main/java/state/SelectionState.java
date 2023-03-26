@@ -27,6 +27,8 @@ public class SelectionState implements State{
         switch (choice){
             case ("1"):
                 return StateFactory.getInstance().createState(StateType.SAVING_STATE);
+            case("2"):
+                return StateFactory.getInstance().createState(StateType.LIABILITY_STATE);
         }
         return null;
     }
