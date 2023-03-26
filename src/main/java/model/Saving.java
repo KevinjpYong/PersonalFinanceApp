@@ -1,17 +1,17 @@
 package model;
 
 public class Saving {
-   int amount;
+   double amount;
 
-    public Saving(int amount){
+    public Saving(double amount){
         this.amount = amount;
     }
 
-    public void setAmount(int amount){
+    public void setAmount(double amount){
         this.amount = amount;
     }
 
-    public int getAmount(){
+    public double getAmount(){
         return this.amount;
     }
 }
