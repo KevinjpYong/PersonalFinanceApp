@@ -15,11 +15,11 @@ public class User {
         this.saving = new Saving(0);
     }
 
-    public void setSaving(int amount){
+    public void setSaving(double amount){
         saving.setAmount(amount);
     }
 
-    public int getSaving(){
+    public double getSaving(){
         return saving.getAmount();
     }
 }

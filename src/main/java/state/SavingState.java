@@ -8,14 +8,14 @@ public class SavingState implements State{
     Scanner scanner = new Scanner(System.in);
     @Override
     public State handle(User user) {
-        System.out.printf("Amount in Saving: %d \n", user.getSaving());
+        System.out.printf("Amount in Saving: %,.2f \n", user.getSaving());
         System.out.println("1.Change amount.");
         System.out.println("2.Return to menu.");
         String selection = scanner.nextLine();
         if(selection.equals("1")){
             return handleSavingAmount(user);
         }else if(selection.equals("2")){
-            System.out.println("returning selection state");
+            System.out.println("Returning selection state");
             return StateFactory.getInstance().createState(StateType.SELECTION_STATE);
         }else{
             System.out.println("Option not available. Please reselect option");
@@ -31,9 +31,10 @@ public class SavingState implements State{
 
     private State handleSavingAmountConvert(User user, String amount){
         try{
-            int amountInteger =Integer.parseInt(amount);
-            if(amountInteger >= 0){
-                user.setSaving(amountInteger);
+            double amountDouble  = Double.parseDouble(amount);
+            if(amountDouble >= 0){
+                double roundOff = Math.round(amountDouble * 100.0) / 100.0;
+                user.setSaving(roundOff);
             }else{
                 System.out.println("Invalid input");
                 return handleSavingAmount(user);

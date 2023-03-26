@@ -41,6 +41,32 @@ public class SavingStateTest {
     }
 
     @Test
+    public void handleChangeSavingAmount_givenTwoDecimals(){
+        String choice = "1\n";
+        String amount = "100.50\n";
+        String input = choice + amount;
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        User user = new User("Tester", 25);
+        SavingState savingState = new SavingState();
+        assertTrue(savingState.handle(user) instanceof SavingState);
+        assertEquals(100.50, user.getSaving());
+    }
+
+    @Test
+    public void handleChangeSavingAmount_givenThreeDecimals(){
+        String choice = "1\n";
+        String amount = "100.551\n";
+        String input = choice + amount;
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        User user = new User("Tester", 25);
+        SavingState savingState = new SavingState();
+        assertTrue(savingState.handle(user) instanceof SavingState);
+        assertEquals(100.55, user.getSaving());
+    }
+
+    @Test
     public void handleChangeSavingAmount_givenChar(){
         String choice = "1\n";
         String amount = "abc\n";
@@ -68,19 +94,6 @@ public class SavingStateTest {
         assertEquals(50, user.getSaving());
     }
 
-    @Test
-    public void handleChangeSavingAmount_givenFloat(){
-        String choice = "1\n";
-        String amount = "100.20\n";
-        String trueAmount = "50\n";
-        String input = choice + amount + trueAmount;
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        User user = new User("Tester", 25);
-        SavingState savingState = new SavingState();
-        assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(50, user.getSaving());
-    }
 
 
 
