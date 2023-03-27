@@ -30,7 +30,7 @@ public class Goal {
             if(averageNetIncome <= 0){
                 return -1;
             }else{
-                int estimatedDuration = (int) (remaining/averageNetIncome);
+                int estimatedDuration = (int) Math.ceil(remaining/averageNetIncome);
                 return estimatedDuration;
             }
         }

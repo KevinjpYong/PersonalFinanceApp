@@ -37,7 +37,7 @@ public class SavingState implements State{
             double amountDouble  = Double.parseDouble(amount);
             if(amountDouble >= 0){
                 double roundOff = Math.round(amountDouble * 100.0) / 100.0;
-                user.setSaving(roundOff);
+                user.getSaving().setAmount(roundOff);
             }else{
                 System.out.println("Invalid input");
                 return handleSavingAmount(user);

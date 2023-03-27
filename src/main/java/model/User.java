@@ -21,9 +21,6 @@ public class User {
         this.goal = null;
     }
 
-    public void setSaving(double amount){
-        saving.setAmount(amount);
-    }
 
     public Saving getSaving(){
         return this.saving;
