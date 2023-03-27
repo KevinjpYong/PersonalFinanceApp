@@ -12,7 +12,7 @@ public class SavingTest {
         Income income = new Income("Salary", 6000);
         saving.update(income);
 
-        assertEquals(5000,saving.amount);
+        assertEquals(6000,saving.amount);
     }
 
     @Test

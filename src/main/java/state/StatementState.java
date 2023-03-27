@@ -20,7 +20,7 @@ public class StatementState implements State{
         String option = displayOption();
         switch (option){
             case("1"):
-                displayStatements(user);
+                displayAllStatements(user);
                 return StateFactory.getInstance().createState(StateType.STATEMENT_STATE);
             case("2"):
                 return addStatement(user);
@@ -38,91 +38,99 @@ public class StatementState implements State{
         return scanner.nextLine();
     }
 
-    private State displayStatements(User user){
-        System.out.println("----------");
+    private State displayAllStatements(User user){
+        System.out.println("---------------");
         System.out.printf("%5s","Statement Date\n");
-        System.out.println("----------");
+        System.out.println("---------------");
+        if(user.getStatements().isEmpty()){
+            System.out.println("No Statement has been created");
+        }
         for(Statement statement: user.getStatements().values()){
             System.out.printf("%s\n", convertDateToString(statement.getDate()));
         }
         System.out.println("--------------------------------------------");
-        return displayOptionsForStatements(user);
+        return displayOptionsForAllStatements(user);
     }
 
-    private State displayOptionsForStatements(User user){
+    private State displayOptionsForAllStatements(User user){
         System.out.println("1. View Statement.");
         System.out.println("2. Back to Statement Menu.");
         String option = scanner.nextLine();
-        return handleOptionsForStatements(option, user);
+        return handleOptionsForAllStatements(option, user);
     }
 
-    private State handleOptionsForStatements(String option, User user){
+    private State handleOptionsForAllStatements(String option, User user){
         switch (option){
             case("1"):
-                return handleViewOneStatement(user);
+                return handleOptionToViewStatement(user);
             case("2"):
                 return StateFactory.getInstance().createState(StateType.STATEMENT_STATE);
             default:
                 System.out.println("Invalid Choice!");
-                displayOptionsForStatements(user);
+                displayOptionsForAllStatements(user);
         }
         return null;
     }
 
-    private State handleViewOneStatement(User user){
+    private State handleOptionToViewStatement(User user){
         Date date = handleDate();
         if(user.getStatements().containsKey(date)){
-            return displayStatement(user.getStatement(date), user);
+            return displayOneStatement(user.getStatement(date), user);
         }else{
             System.out.println("Invalid Date!");
-            return displayOptionsForStatements(user);
+            return displayOptionsForAllStatements(user);
         }
 
     }
 
-    private State displayStatement(Statement statement, User user){
+    private State displayOneStatement(Statement statement, User user){
         System.out.println("--------------------------------------------");
         System.out.printf("Statement for %s \n", convertDateToString(statement.getDate()));
         System.out.println("--------------------------------------------");
         System.out.println("----------");
         System.out.println("INCOME");
         System.out.println("----------");
+        if(statement.getIncomes().isEmpty()){
+            System.out.println("No Income has been added");
+        }
         for(Income income: statement.getIncomes()){
             System.out.printf("%-15s%-15.2f\n",income.getName(), income.getAmount());
         }
         System.out.println("----------");
         System.out.println("Expenses");
         System.out.println("----------");
+        if(statement.getExpenses().isEmpty()){
+            System.out.println("No Expense has been added");
+        }
         for(Expense expense: statement.getExpenses()){
             System.out.printf("%-30s%-30.2f\n", expense.getName(),expense.getAmount());
         }
         System.out.println("------------------------------------------------");
         System.out.printf("%-40s %.2f\n","Net Income/Lose:", statement.getNetIncome());
         System.out.println("------------------------------------------------");
-        return displayOptionForStatement(statement, user );
+        return displayOptionForOneStatement(statement, user );
     }
 
-    private State displayOptionForStatement(Statement statement, User user){
+    private State displayOptionForOneStatement(Statement statement, User user){
         System.out.println("1. Add Income.");
         System.out.println("2. Add Expense.");
         System.out.println("3. Back to view all statement.");
         String option =  scanner.nextLine();
-        return handleOptionsForStatement(option, statement, user);
+        return handleOptionsForOneStatement(option, statement, user);
     }
 
-    private State handleOptionsForStatement(String option, Statement statement, User user){
+    private State handleOptionsForOneStatement(String option, Statement statement, User user){
         switch (option){
             case("1"):
                 return handleAddIncome(statement, user);
             case("2"):
                 return handleAddExpense(statement, user);
             case("3"):
-                return displayStatements(user);
+                return displayAllStatements(user);
             default:
                 System.out.println("Invalid Choice!");
-                displayOptionForStatement(statement, user);
+                return displayOptionForOneStatement(statement, user);
         }
-        return null;
     }
 
     private State handleAddIncome(Statement statement,User user){
@@ -130,7 +138,7 @@ public class StatementState implements State{
         String name = scanner.nextLine();
         double amount = handleAmount();
         statement.addIncome(new Income(name, amount));
-        return displayStatement(statement, user);
+        return displayOneStatement(statement, user);
     }
 
     private double handleAmount(){
@@ -156,7 +164,7 @@ public class StatementState implements State{
         String name = scanner.nextLine();
         double amount = handleAmount();
         statement.addExpense(new Expense(name, amount));
-        return displayStatement(statement, user);
+        return displayOneStatement(statement, user);
     }
 
     private State addStatement(User user){
@@ -166,7 +174,7 @@ public class StatementState implements State{
             statement.registerObserver(user.getSaving());
             statement.addExpenses(user.getLiabilitiesRepayment());
             user.addStatement(statement);
-            return displayStatement(statement, user);
+            return displayOneStatement(statement, user);
         }else{
             System.out.println("Statement Already Exist. Unable to create repeated statement");
             return handle(user);
