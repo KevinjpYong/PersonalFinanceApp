@@ -4,6 +4,6 @@ public enum StateType {
     SELECTION_STATE,
     SAVING_STATE,
     LIABILITY_STATE,
-
-    STATEMENT_STATE
+    STATEMENT_STATE,
+    GOAL_STATE,
 }

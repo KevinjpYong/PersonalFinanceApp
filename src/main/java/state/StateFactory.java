@@ -25,6 +25,8 @@ public class StateFactory {
                 return new LiabilityState();
             case STATEMENT_STATE:
                 return new StatementState();
+            case GOAL_STATE:
+                return new GoalState();
             default:
                 throw new IllegalArgumentException("Invalid state type: " + type);
         }

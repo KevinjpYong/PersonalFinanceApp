@@ -18,6 +18,7 @@ public class User {
         this.saving = new Saving(0);
         this.liabilities = new ArrayList<>();
         this.statements = new HashMap<>();
+        this.goal = null;
     }
 
     public void setSaving(double amount){
@@ -51,5 +52,27 @@ public class User {
 
     public Statement getStatement(Date date){
         return this.statements.get(date);
+    }
+
+    public void setGoal(Goal goal){
+        this.goal = goal;
+    }
+
+    public Goal getGoal(){
+        return this.goal;
+    }
+
+    public double getAverageNetIncome(){
+        double averageNetIncome = 0;
+        for(Statement statement: this.statements.values()){
+            averageNetIncome += statement.getNetIncome();
+        }
+
+        if(!this.statements.isEmpty()){
+            return averageNetIncome/this.statements.size();
+        }else{
+            return 0;
+        }
+
     }
 }

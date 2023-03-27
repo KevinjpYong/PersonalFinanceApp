@@ -31,6 +31,8 @@ public class SelectionState implements State{
                 return StateFactory.getInstance().createState(StateType.LIABILITY_STATE);
             case("3"):
                 return StateFactory.getInstance().createState(StateType.STATEMENT_STATE);
+            case("4"):
+                return StateFactory.getInstance().createState(StateType.GOAL_STATE);
             default:
                 System.out.println("Invalid Option");
                 return StateFactory.getInstance().createState(StateType.SELECTION_STATE);
