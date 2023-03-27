@@ -19,7 +19,7 @@ public class SelectionState implements State{
         System.out.println("1.Display/Change Saving Account");
         System.out.println("2.Display/Add Liabilities");
         System.out.println("3.Display/Add Statement");
-        System.out.println("4.Display/Change model.Goal.");
+        System.out.println("4.Display/Change Goal.");
         System.out.println("5.Budgeting.");
         System.out.print("Please select action: ");
 
@@ -29,7 +29,11 @@ public class SelectionState implements State{
                 return StateFactory.getInstance().createState(StateType.SAVING_STATE);
             case("2"):
                 return StateFactory.getInstance().createState(StateType.LIABILITY_STATE);
+            case("3"):
+                return StateFactory.getInstance().createState(StateType.STATEMENT_STATE);
+            default:
+                System.out.println("Invalid Option");
+                return StateFactory.getInstance().createState(StateType.SELECTION_STATE);
         }
-        return null;
     }
 }

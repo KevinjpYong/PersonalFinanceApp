@@ -37,7 +37,7 @@ public class SavingStateTest {
         User user = new User("Tester", 25);
         SavingState savingState = new SavingState();
         assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(100, user.getSaving());
+        assertEquals(100, user.getSaving().getAmount());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class SavingStateTest {
         User user = new User("Tester", 25);
         SavingState savingState = new SavingState();
         assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(100.50, user.getSaving());
+        assertEquals(100.50, user.getSaving().getAmount());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class SavingStateTest {
         User user = new User("Tester", 25);
         SavingState savingState = new SavingState();
         assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(100.55, user.getSaving());
+        assertEquals(100.55, user.getSaving().getAmount());
     }
 
     @Test
@@ -77,7 +77,7 @@ public class SavingStateTest {
         User user = new User("Tester", 25);
         SavingState savingState = new SavingState();
         assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(100, user.getSaving());
+        assertEquals(100, user.getSaving().getAmount());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class SavingStateTest {
         User user = new User("Tester", 25);
         SavingState savingState = new SavingState();
         assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(50, user.getSaving());
+        assertEquals(50, user.getSaving().getAmount());
     }
 
 
@@ -106,7 +106,7 @@ public class SavingStateTest {
         User user = new User("Tester", 25);
         SavingState savingState = new SavingState();
         assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(0, user.getSaving());
+        assertEquals(0, user.getSaving().getAmount());
     }
 
     @Test
@@ -118,6 +118,6 @@ public class SavingStateTest {
         User user = new User("Tester", 25);
         SavingState savingState = new SavingState();
         assertTrue(savingState.handle(user) instanceof SavingState);
-        assertEquals(0, user.getSaving());
+        assertEquals(0, user.getSaving().getAmount());
     }
 }

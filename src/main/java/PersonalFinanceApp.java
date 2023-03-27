@@ -19,7 +19,10 @@ public class PersonalFinanceApp {
 
 
     private static User handleUser(){
-        System.out.print("Welcome to your Personal Finance App!\nPlease enter your name: ");
+        System.out.println("================================================");
+        System.out.println("Welcome to your Personal Finance App!");
+        System.out.println("================================================");
+        System.out.print("Please enter your name: ");
         String name = scanner.nextLine();
         System.out.print("Please enter your age: ");
         int age = Integer.parseInt(scanner.nextLine());

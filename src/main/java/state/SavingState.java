@@ -11,7 +11,7 @@ public class SavingState implements State{
         System.out.println("---------------");
         System.out.println("Saving Menu");
         System.out.println("---------------");
-        System.out.printf("Amount in Saving: %,.2f \n", user.getSaving());
+        System.out.printf("Amount in Saving: %,.2f \n", user.getSaving().getAmount());
         System.out.println("1.Change amount.");
         System.out.println("2.Return to menu.");
         String selection = scanner.nextLine();
