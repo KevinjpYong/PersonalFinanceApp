@@ -2,7 +2,6 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import state.State;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,7 +52,7 @@ public class GoalTest {
         Income income = new Income("Salary", 6000);
         user.addStatement(statement);
         statement.addIncome(income);
-        assertEquals(0, goal.estimateDurationRequired(user));
+        assertEquals(0, goal.estimateDurationRequire(user));
     }
 
     @Test
@@ -68,7 +67,7 @@ public class GoalTest {
         Expense expense = new Expense("Food", 1000);
         user.addStatement(statement);
         statement.addExpense(expense);
-        assertEquals(-1, goal.estimateDurationRequired(user));
+        assertEquals(-1, goal.estimateDurationRequire(user));
     }
 
     @Test
@@ -83,7 +82,7 @@ public class GoalTest {
         Income income = new Income("Salary", 1000);
         user.addStatement(statement);
         statement.addIncome(income);
-        assertEquals(33, goal.estimateDurationRequired(user));
+        assertEquals(33, goal.estimateDurationRequire(user));
     }
 
     @Test
@@ -98,7 +97,7 @@ public class GoalTest {
         Income income = new Income("Salary", 15000);
         user.addStatement(statement);
         statement.addIncome(income);
-        assertEquals(3, goal.estimateDurationRequired(user));
+        assertEquals(3, goal.estimateDurationRequire(user));
     }
 
     @Test
@@ -113,6 +112,6 @@ public class GoalTest {
         Income income = new Income("Salary", 40000);
         user.addStatement(statement);
         statement.addIncome(income);
-        assertEquals(1, goal.estimateDurationRequired(user));
+        assertEquals(1, goal.estimateDurationRequire(user));
     }
 }

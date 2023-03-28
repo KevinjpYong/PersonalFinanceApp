@@ -3,7 +3,7 @@ package model;
 /**
  * Factory to create budgeting expense calculation strategy
  * **/
-public class BudgetingExpenseStrategyFactory {
+public class BudgetingExpensesStrategyFactory {
 
     // get calculation strategy based on budgeting type
     public BudgetingExpensesStrategy getBudgetingExpensesStrategy(BudgetingType type){

@@ -15,7 +15,7 @@ public class Budgeting {
     // The constructor
     public Budgeting(BudgetingType type, double totalCost, Liability loan, User user){
         this.type = type;
-        this.budgetingExpensesStrategy = new BudgetingExpenseStrategyFactory().getBudgetingExpensesStrategy(type);
+        this.budgetingExpensesStrategy = new BudgetingExpensesStrategyFactory().getBudgetingExpensesStrategy(type);
         this.totalCost = totalCost;
         this.loan = loan;
         this.user = user;

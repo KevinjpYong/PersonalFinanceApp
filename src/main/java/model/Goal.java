@@ -26,7 +26,7 @@ public class Goal {
     }
 
     // calculate estimate duration to achieve goal's target amount based on past statements' net income
-    public int estimateDurationRequired(User user){
+    public int estimateDurationRequire(User user){
         double remaining = calAmountRemaining(user);
         double averageNetIncome = user.getAverageNetIncome();
         // return 0 if goal's target achieved

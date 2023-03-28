@@ -54,7 +54,7 @@ public class Liability{
     // calculate monthly repayment using principle + interest payment
     // Repayment formula = (Total Amount * rates *((1+rates)^duration))) / (((1+rates)^duration) - 1)
     public double getMonthlyPayment(){
-        // dive 12 to get montly rates
+        // dive 12 to get monthly rates
         double monthRates = this.rates /12;
         double monthlyPayment = (this.amount * monthRates * Math.pow((1+monthRates),duration)) /
                 (Math.pow((1+monthRates),duration) - 1);

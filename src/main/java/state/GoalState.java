@@ -69,11 +69,11 @@ public class GoalState implements State{
 
     // display user's estimate duration to achieve goal based on past statements
     private void displayEstimationDuration(User user){
-        if(user.getGoal().estimateDurationRequired(user) == 0 ){
+        if(user.getGoal().estimateDurationRequire(user) == 0 ){
             System.out.printf("%-50s %-15d \n", "Estimation Duration To Achieve Goal:",
                     0);
             System.out.println("GOAL ACHIEVE !!!");
-        }else if(user.getGoal().estimateDurationRequired(user) < 0 ){
+        }else if(user.getGoal().estimateDurationRequire(user) < 0 ){
             System.out.printf("%-50s %-15s \n", "Estimation Duration To Achieve Goal:",
                     "UNABLE");
             System.out.println("BASED ON PAST NET INCOME GOAL UNABLE TO ACHIEVE");
@@ -82,7 +82,7 @@ public class GoalState implements State{
             System.out.printf("%-50s %-15.2f \n", "Average Net Income:",
                     user.getAverageNetIncome());
             System.out.printf("%-50s %-15d \n", "Estimation Duration To Achieve Goal(months):",
-                    user.getGoal().estimateDurationRequired(user));
+                    user.getGoal().estimateDurationRequire(user));
             System.out.println("-----------------------------------------------------------------");
         }
     }
