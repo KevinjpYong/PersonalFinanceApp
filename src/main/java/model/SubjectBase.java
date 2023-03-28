@@ -1,13 +1,13 @@
 package model;
 
-import java.util.ArrayList;
+/**
+ * Interface for subject to be observed
+ * **/
 
 public interface SubjectBase {
 
-    void addObserver(ObserverBase observer);
+    void registerObserver(ObserverBase observer);
 
-    void removeObserver(ObserverBase observer);
-
-    void notifyObserver();
+    void notifyObserver(CashFlow cashFlow);
 
 }

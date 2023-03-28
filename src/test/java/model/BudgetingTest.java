@@ -19,7 +19,7 @@ public class BudgetingTest {
 
         double actualInitialPayment = 28000;
 
-        assertEquals(actualInitialPayment, budgeting.calCurrentPayment());
+        assertEquals(actualInitialPayment, budgeting.calcCurrentPayment());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class BudgetingTest {
 
         double actualInitialPayment = 0;
 
-        assertEquals(actualInitialPayment, budgeting.calCurrentPayment());
+        assertEquals(actualInitialPayment, budgeting.calcCurrentPayment());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class BudgetingTest {
 
         double actualInitialPayment = 38000;
 
-        assertEquals(actualInitialPayment, budgeting.calCurrentPayment());
+        assertEquals(actualInitialPayment, budgeting.calcCurrentPayment());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class BudgetingTest {
 
         double actualExtraExpenses = loan.getMonthlyPayment() + insuranceUnder25;
 
-        assertEquals(actualExtraExpenses, budgeting.calExtraExpenses());
+        assertEquals(actualExtraExpenses, budgeting.calcExtraExpenses());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class BudgetingTest {
 
         double actualDifference = 2000;
 
-        assertEquals(actualDifference, budgeting.calInitialPaymentWithSaving());
+        assertEquals(actualDifference, budgeting.calcInitialPaymentWithSaving());
     }
 
     @Test
@@ -101,6 +101,6 @@ public class BudgetingTest {
 
         double actualExtraExpenses = 7000-1002.69;
 
-        assertEquals(actualExtraExpenses, budgeting.calNetIncomeAfterExtraExpenses());
+        assertEquals(actualExtraExpenses, budgeting.calcNetIncomeAfterExtraExpenses());
     }
 }

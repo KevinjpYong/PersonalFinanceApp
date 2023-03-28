@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * Budgeting Model
+ * **/
+
 public class Budgeting {
     private BudgetingType type;
     private BudgetingExpensesStrategy budgetingExpensesStrategy;
@@ -8,6 +12,7 @@ public class Budgeting {
     private Liability loan;
     private User user;
 
+    // The constructor
     public Budgeting(BudgetingType type, double totalCost, Liability loan, User user){
         this.type = type;
         this.budgetingExpensesStrategy = new BudgetingExpenseStrategyFactory().getBudgetingExpensesStrategy(type);
@@ -16,21 +21,24 @@ public class Budgeting {
         this.user = user;
     }
 
-    public double calExtraExpenses(){
-        return budgetingExpensesStrategy.calculateBudgetingExpenses(this.totalCost, this.loan, this.user);
+    // calculate the extra expenses from the budgeting using different strategy
+    public double calcExtraExpenses(){
+        return budgetingExpensesStrategy.calcBudgetingExpenses(this.totalCost, this.loan, this.user);
     }
 
-    public double calCurrentPayment(){
+    // calculate the required amount to pay currently
+    public double calcCurrentPayment(){
         return totalCost-loan.getAmount();
     }
 
-
-    public double calInitialPaymentWithSaving(){
-        return user.getSaving().getAmount() - calCurrentPayment();
+    // calculate the difference of user's saving and current amount to pay
+    public double calcInitialPaymentWithSaving(){
+        return user.getSaving().getAmount() - calcCurrentPayment();
     }
 
-    public double calNetIncomeAfterExtraExpenses(){
-        return user.getAverageNetIncome() - calExtraExpenses();
+    // calculate the difference of user's average net income and extra monthly expenses
+    public double calcNetIncomeAfterExtraExpenses(){
+        return user.getAverageNetIncome() - calcExtraExpenses();
     }
 
 

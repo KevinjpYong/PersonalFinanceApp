@@ -1,6 +1,9 @@
 package model;
 
+/**
+ * Interface for Budgeting Expenses Calculation Strategy
+ * **/
 public interface BudgetingExpensesStrategy {
 
-    double calculateBudgetingExpenses(double totalCost, Liability loan, User user);
+    double calcBudgetingExpenses(double totalCost, Liability loan, User user);
 }

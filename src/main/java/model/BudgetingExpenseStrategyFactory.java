@@ -1,6 +1,11 @@
 package model;
 
+/**
+ * Factory to create budgeting expense calculation strategy
+ * **/
 public class BudgetingExpenseStrategyFactory {
+
+    // get calculation strategy based on budgeting type
     public BudgetingExpensesStrategy getBudgetingExpensesStrategy(BudgetingType type){
         switch (type){
             case CAR_PURCHASE:
