@@ -3,6 +3,8 @@
 ## Description
 Personal Finance App is a simple command line system. It allows user to keep track of spending, liabilities, monthly incomes and expenses, goal and do budgeting for potential purchase or loan. 
 
+Domain Model Class Diagram available in Documents
+
 The Project is build with JDK 17.
 
 
