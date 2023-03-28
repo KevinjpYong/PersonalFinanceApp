@@ -1,5 +1,9 @@
 package state;
 
+/**
+ * Singleton factory to create State of the System
+ * **/
+
 public class StateFactory {
 
     private static StateFactory instance = null;
@@ -25,6 +29,10 @@ public class StateFactory {
                 return new LiabilityState();
             case STATEMENT_STATE:
                 return new StatementState();
+            case GOAL_STATE:
+                return new GoalState();
+            case BUDGETING_STATE:
+                    return new BudgetingState();
             default:
                 throw new IllegalArgumentException("Invalid state type: " + type);
         }

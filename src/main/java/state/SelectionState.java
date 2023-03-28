@@ -4,6 +4,11 @@ import model.User;
 
 import java.util.Scanner;
 
+/**
+ * Main Menu of Personal Finance App
+ * display selection menu
+ * redirect selection to corresponding state
+ * **/
 
 public class SelectionState implements State{
     Scanner scanner = new Scanner(System.in);
@@ -13,6 +18,7 @@ public class SelectionState implements State{
     }
     @Override
     public State handle(User user) {
+        // Display option interface
         System.out.println("-------------------------------------");
         System.out.println("Selection Menu");
         System.out.println("-------------------------------------");
@@ -24,6 +30,8 @@ public class SelectionState implements State{
         System.out.print("Please select action: ");
 
         String choice = scanner.nextLine();
+
+        // redirect selection to corresponding state
         switch (choice){
             case ("1"):
                 return StateFactory.getInstance().createState(StateType.SAVING_STATE);
@@ -31,6 +39,10 @@ public class SelectionState implements State{
                 return StateFactory.getInstance().createState(StateType.LIABILITY_STATE);
             case("3"):
                 return StateFactory.getInstance().createState(StateType.STATEMENT_STATE);
+            case("4"):
+                return StateFactory.getInstance().createState(StateType.GOAL_STATE);
+            case("5"):
+                return StateFactory.getInstance().createState(StateType.BUDGETING_STATE);
             default:
                 System.out.println("Invalid Option");
                 return StateFactory.getInstance().createState(StateType.SELECTION_STATE);

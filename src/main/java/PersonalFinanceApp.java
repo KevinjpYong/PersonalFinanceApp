@@ -6,18 +6,25 @@ import state.StateType;
 
 import java.util.Scanner;
 
+/**
+ * Main Class for Personal FinanceApp
+ * **/
+
 public class PersonalFinanceApp {
+
+    // The scanner to take the user inputs
     public static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         User user = handleUser();
-
+        // factory to create different state
         State state = StateFactory.getInstance().createState(StateType.SELECTION_STATE);
         while(true){
+            // handle different state of the system
             state = state.handle(user);
         }
     }
 
-
+    // handle user information
     private static User handleUser(){
         System.out.println("================================================");
         System.out.println("Welcome to your Personal Finance App!");
