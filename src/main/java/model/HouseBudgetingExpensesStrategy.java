@@ -8,7 +8,7 @@ public class HouseBudgetingExpensesStrategy implements BudgetingExpensesStrategy
         // loan to value ratio
         double lvr = loan.getAmount()/totalCost;
 
-        if(lvr>0.8){
+        if(lvr<0.8){
             return loan.getMonthlyPayment();
         }else{
             Liability lmiLiability = new Liability("lmi",loan.getAmount()*LMI,LMI,loan.getDuration());

@@ -1,5 +1,9 @@
 package state;
 
+/**
+ * Singleton factory to create State of the System
+ * **/
+
 public class StateFactory {
 
     private static StateFactory instance = null;

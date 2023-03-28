@@ -21,7 +21,7 @@ public class Budgeting {
     }
 
     public double calCurrentPayment(){
-        return user.getSaving().getAmount() - (totalCost-loan.getAmount());
+        return totalCost-loan.getAmount();
     }
 
 
