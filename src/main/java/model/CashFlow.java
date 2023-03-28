@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Model for CashFlow
+ * **/
 public class CashFlow {
     String name;
     double amount;

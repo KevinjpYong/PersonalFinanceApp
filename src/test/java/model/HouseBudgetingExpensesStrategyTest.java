@@ -13,7 +13,7 @@ public class HouseBudgetingExpensesStrategyTest {
         HouseBudgetingExpensesStrategy strategy = new HouseBudgetingExpensesStrategy();
         double totalCost = 800000;
         double actualExpense = loan.getMonthlyPayment();
-        assertEquals(actualExpense, strategy.calculateBudgetingExpenses(totalCost,loan, user));
+        assertEquals(actualExpense, strategy.calcBudgetingExpenses(totalCost,loan, user));
     }
 
     @Test
@@ -24,6 +24,6 @@ public class HouseBudgetingExpensesStrategyTest {
         double totalCost = 1000000;
         double lmiMonthlyPayment = new Liability("LMI", 8000,0.01,360).getMonthlyPayment();
         double actualExpense = loan.getMonthlyPayment()+lmiMonthlyPayment;
-        assertEquals(actualExpense, strategy.calculateBudgetingExpenses(totalCost,loan, user));
+        assertEquals(actualExpense, strategy.calcBudgetingExpenses(totalCost,loan, user));
     }
 }

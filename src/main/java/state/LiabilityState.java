@@ -5,15 +5,24 @@ import model.User;
 
 import java.util.Scanner;
 
+/**
+ * Liability State
+ * View or add user's Liability
+ * **/
+
 public class LiabilityState implements State{
 
     Scanner scanner = new Scanner(System.in);
+
+    // handle state
     @Override
     public State handle(User user) {
         System.out.println("---------------");
         System.out.println("Liability Menu");
         System.out.println("---------------");
+        // display options
         String option = displayOption();
+        // handle options
         switch (option){
             case("1"):
                 displayLiabilities(user);
@@ -29,6 +38,7 @@ public class LiabilityState implements State{
         }
     }
 
+    // display options
     private String displayOption(){
         System.out.println("1. Display Liabilities.");
         System.out.println("2. Add Liability.");
@@ -36,6 +46,7 @@ public class LiabilityState implements State{
         return scanner.nextLine();
     }
 
+    // display liability
     private void displayLiabilities(User user){
         System.out.println("---------------------------------------------------------------------------------------------");
         System.out.printf("%-4s%-15s %-15s %-20s %-20s %-20s", "NO.","NAME", "AMOUNT", "RATES(%)", "DURATION(Month)","MONTHLY PAYMENT");
@@ -47,14 +58,14 @@ public class LiabilityState implements State{
                     i+".",liability.getName(),
                     liability.getAmount(),
                     liability.getRates()*100,
-                    liability.getDuration(),
+                    liability.getRemainingDuration(),
                     liability.getMonthlyPayment());
             i++;
         }
         System.out.println("---------------------------------------------------------------------------------------------");
     }
 
-
+    // add liability
    private void addLiabilities(User user){
        System.out.print("Enter liability name: ");
        String name = scanner.nextLine();
@@ -65,25 +76,29 @@ public class LiabilityState implements State{
        user.addLiabilities(new Liability(name, amount, rates, duration));
    }
 
-
+    // get amount from user input
     private double handleAmount(){
         System.out.print("Enter liability amount: ");
         String amount = scanner.nextLine();
         try{
             double amountDouble  = Double.parseDouble(amount);
             if(amountDouble >= 0){
+                // round off to 2 decimal to represent money
                 double roundOff = Math.round(amountDouble * 100.0) / 100.0;
                 return roundOff;
             }else{
+                // user input negative value re-ask user for input
                 System.out.println("Invalid input");
                 return handleAmount();
             }
         }catch(NumberFormatException nfe){
+            // unable to convert user input to number
             System.out.println("Invalid input");
             return handleAmount();
         }
     }
 
+    // get rates from user input
     private double handleRates(){
         System.out.print("Enter liability rates in %: ");
         String rates = scanner.nextLine();
@@ -93,15 +108,18 @@ public class LiabilityState implements State{
             if(ratesDouble >= 0){
                 return ratesDouble;
             }else{
+                // user input negative value re-ask user for input
                 System.out.println("Invalid input");
                 return handleRates();
             }
         }catch(NumberFormatException nfe){
+            // unable to convert user input to number
             System.out.println("Invalid input");
             return handleRates();
         }
     }
 
+    // get duration from user input
     private int handleDuration(){
         System.out.print("Enter liability duration(months): ");
         String duration = scanner.nextLine();
@@ -110,10 +128,12 @@ public class LiabilityState implements State{
             if(durationInt >= 0){
                 return durationInt;
             }else{
+                // user input negative value re-ask user for input
                 System.out.println("Invalid input");
                 return handleDuration();
             }
         }catch(NumberFormatException nfe){
+            // unable to convert user input to number
             System.out.println("Invalid input");
             return handleDuration();
         }

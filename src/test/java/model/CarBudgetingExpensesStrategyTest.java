@@ -14,7 +14,7 @@ public class CarBudgetingExpensesStrategyTest {
         double totalCost = 10000;
         double insurance = 114.20;
         double actualExpense = loan.getMonthlyPayment()+insurance;
-        assertEquals(actualExpense, strategy.calculateBudgetingExpenses(totalCost,loan, user));
+        assertEquals(actualExpense, strategy.calcBudgetingExpenses(totalCost,loan, user));
     }
     @Test
     public void calcBudgetingExpensesAge24Test(){
@@ -24,7 +24,7 @@ public class CarBudgetingExpensesStrategyTest {
         double totalCost = 10000;
         double insurance = 142.70;
         double actualExpense = loan.getMonthlyPayment()+insurance;
-        assertEquals(actualExpense, strategy.calculateBudgetingExpenses(totalCost,loan, user));
+        assertEquals(actualExpense, strategy.calcBudgetingExpenses(totalCost,loan, user));
     }
     @Test
     public void calcBudgetingExpensesAgeZeroTest(){
@@ -34,6 +34,6 @@ public class CarBudgetingExpensesStrategyTest {
         double totalCost = 10000;
         double insurance = 142.70;
         double actualExpense = loan.getMonthlyPayment()+insurance;
-        assertEquals(actualExpense, strategy.calculateBudgetingExpenses(totalCost,loan, user));
+        assertEquals(actualExpense, strategy.calcBudgetingExpenses(totalCost,loan, user));
     }
 }

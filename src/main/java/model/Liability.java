@@ -1,6 +1,9 @@
 package model;
 
-public class Liability {
+/**
+ * Model for Liability
+ * **/
+public class Liability{
     private String name;
     private double amount;
     private double rates;
@@ -32,10 +35,15 @@ public class Liability {
         return duration;
     }
 
+    public int getRemainingDuration(){
+        return this.remainingDuration;
+    }
+
     public void setRemainingDuration(int remainingDuration){
         this.remainingDuration = remainingDuration;
     }
 
+    // create expense based on monthly repayment
     public Expense createExpense(){
         String name = this.name + " Repayment";
         double monthlyPayment = getMonthlyPayment();
@@ -43,7 +51,10 @@ public class Liability {
         return new Expense(name, monthlyPayment);
     }
 
+    // calculate monthly repayment using principle + interest payment
+    // Repayment formula = (Total Amount * rates *((1+rates)^duration))) / (((1+rates)^duration) - 1)
     public double getMonthlyPayment(){
+        // dive 12 to get montly rates
         double monthRates = this.rates /12;
         double monthlyPayment = (this.amount * monthRates * Math.pow((1+monthRates),duration)) /
                 (Math.pow((1+monthRates),duration) - 1);
@@ -51,6 +62,7 @@ public class Liability {
         return monthlyPayment;
     }
 
+    // reduce the remaining duration of the liability
     private void reduceRemainingDuration(){
         setRemainingDuration(this.duration - 1);
     }

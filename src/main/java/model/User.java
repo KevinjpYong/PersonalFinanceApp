@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * model for user
+ * **/
+
 public class User {
     String name;
     int age;
@@ -43,6 +47,7 @@ public class User {
 
     public HashMap<Date,Statement> getStatements(){ return this.statements;}
 
+    // create expenses from all liabilities
     public ArrayList<Expense> getLiabilitiesRepayment(){
         ArrayList<Expense> expenses = new ArrayList<>();
         for(Liability liability: liabilities){
@@ -63,6 +68,7 @@ public class User {
         return this.goal;
     }
 
+    // calculate net income from historical monthly statements
     public double getAverageNetIncome(){
         double averageNetIncome = 0;
         for(Statement statement: this.statements.values()){
