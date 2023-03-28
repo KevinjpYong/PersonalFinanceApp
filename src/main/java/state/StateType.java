@@ -6,4 +6,5 @@ public enum StateType {
     LIABILITY_STATE,
     STATEMENT_STATE,
     GOAL_STATE,
+    BUDGETING_STATE
 }

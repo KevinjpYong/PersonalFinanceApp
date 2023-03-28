@@ -26,6 +26,10 @@ public class User {
         return this.saving;
     }
 
+    public int getAge(){
+        return this.age;
+    }
+
     public void addLiabilities(Liability liability){
         this.liabilities.add(liability);
     }

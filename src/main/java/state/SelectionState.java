@@ -33,6 +33,8 @@ public class SelectionState implements State{
                 return StateFactory.getInstance().createState(StateType.STATEMENT_STATE);
             case("4"):
                 return StateFactory.getInstance().createState(StateType.GOAL_STATE);
+            case("5"):
+                return StateFactory.getInstance().createState(StateType.BUDGETING_STATE);
             default:
                 System.out.println("Invalid Option");
                 return StateFactory.getInstance().createState(StateType.SELECTION_STATE);
