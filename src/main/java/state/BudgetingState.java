@@ -57,7 +57,6 @@ public class BudgetingState implements State{
         System.out.printf("%-30s %-15.2f \n", "Saving:",user.getSaving().getAmount());
         System.out.printf("%-45s %-15.2f \n", "InitialPayment:", budgeting.calcCurrentPayment());
         System.out.println("------------------------------------------------");
-        System.out.println(budgeting.calcInitialPaymentWithSaving());
         // display affordability result
         if(budgeting.calcInitialPaymentWithSaving()>=0){
             System.out.println("Sufficient saving for initial payment.");

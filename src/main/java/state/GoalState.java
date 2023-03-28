@@ -50,14 +50,15 @@ public class GoalState implements State{
 
     // display user goal
     private void displayGoal(User user){
-        System.out.printf("%-30s %-15.2f \n", "Saving:",user.getSaving().getAmount());
         // if user has no goal
         if(user.getGoal()==null){
+            System.out.printf("%-30s %-15.2f \n", "Saving:",user.getSaving().getAmount());
             System.out.println("NO GOAL IN PROGRESS");
         }else{
             // display user's saving and remaining goal
             System.out.printf("%-30s %-15.2f \n", user.getGoal().getName()+" Goal:",
                     user.getGoal().getAmount());
+            System.out.printf("%-30s %-15.2f \n", "Saving:",user.getSaving().getAmount());
             System.out.printf("%-30s %-15.2f \n", "Remaining Amount To Goal",
                     user.getGoal().calAmountRemaining(user));
             // display estimate amount to achieve goal
@@ -77,12 +78,12 @@ public class GoalState implements State{
                     "UNABLE");
             System.out.println("BASED ON PAST NET INCOME GOAL UNABLE TO ACHIEVE");
         }else{
-            System.out.println("-----------------------------------------------------");
-            System.out.printf("%-50s %-15d \n", "Average Net Income:",
+            System.out.println("------------------------------------------------------------------");
+            System.out.printf("%-50s %-15.2f \n", "Average Net Income:",
                     user.getAverageNetIncome());
-            System.out.printf("%-50s %-15d \n", "Estimation Duration To Achieve Goal:",
+            System.out.printf("%-50s %-15d \n", "Estimation Duration To Achieve Goal(months):",
                     user.getGoal().estimateDurationRequired(user));
-            System.out.println("-----------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------");
         }
     }
 

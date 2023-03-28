@@ -27,6 +27,7 @@ public class SelectionState implements State{
         System.out.println("3.Display/Add Statement");
         System.out.println("4.Display/Change Goal.");
         System.out.println("5.Budgeting.");
+        System.out.println("6.Quit");
         System.out.print("Please select action: ");
 
         String choice = scanner.nextLine();
@@ -43,6 +44,8 @@ public class SelectionState implements State{
                 return StateFactory.getInstance().createState(StateType.GOAL_STATE);
             case("5"):
                 return StateFactory.getInstance().createState(StateType.BUDGETING_STATE);
+            case("6"):
+                System.exit(0);
             default:
                 System.out.println("Invalid Option");
                 return StateFactory.getInstance().createState(StateType.SELECTION_STATE);
